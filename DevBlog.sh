@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #set -x
-cd /home/ajorians/Temp
+cd /home/techsmith/temp
 
 rm index.html
 wget http://devblog.techsmith.com/feed/
@@ -27,11 +27,11 @@ govfilename=$(date +%Y-%m-%d).dat
 
 value=5
 
-lasttitle1=$(cat /home/ajorians/Temp/lasttitle1);
-lasttitle2=$(cat /home/ajorians/Temp/lasttitle2);
-lasttitle3=$(cat /home/ajorians/Temp/lasttitle3);
-lasttitle4=$(cat /home/ajorians/Temp/lasttitle4);
-lasttitle5=$(cat /home/ajorians/Temp/lasttitle5);
+lasttitle1=$(cat /home/techsmith/temp/lasttitle1);
+lasttitle2=$(cat /home/techsmith/temp/lasttitle2);
+lasttitle3=$(cat /home/techsmith/temp/lasttitle3);
+lasttitle4=$(cat /home/techsmith/temp/lasttitle4);
+lasttitle5=$(cat /home/techsmith/temp/lasttitle5);
 
 currentpost=0;
 
@@ -42,7 +42,7 @@ fi
 
 if [ -n "$filename" ]; then
 	echo $filename
-	fullpath="/home/ajorians/Temp/$filename"
+	fullpath="/home/techsmith/temp/$filename"
 	echo $fullpath
 
         title="";
@@ -88,11 +88,11 @@ if [ -n "$filename" ]; then
                     lasttitle5=$title;
                  fi
 
-                 echo $lasttitle1 > /home/ajorians/Temp/lasttitle1
-                 echo $lasttitle2 > /home/ajorians/Temp/lasttitle2
-                 echo $lasttitle3 > /home/ajorians/Temp/lasttitle3
-                 echo $lasttitle4 > /home/ajorians/Temp/lasttitle4
-                 echo $lasttitle5 > /home/ajorians/Temp/lasttitle5
+                 echo $lasttitle1 > /home/techsmith/temp/lasttitle1
+                 echo $lasttitle2 > /home/techsmith/temp/lasttitle2
+                 echo $lasttitle3 > /home/techsmith/temp/lasttitle3
+                 echo $lasttitle4 > /home/techsmith/temp/lasttitle4
+                 echo $lasttitle5 > /home/techsmith/temp/lasttitle5
 
               else
                  echo "Duplicate title as an existing post"
@@ -137,7 +137,7 @@ if [ -n "$filename" ]; then
 
               message="New DevBlog post: [$title]($link)"
               echo "Message: $message"
-              /home/ajorians/Documents/Git/DevBlogBot/Build/SimpleFlowdockConsole/SimpleFlowdockConsole --org techsmith --flow development --user a.orians@techsmith.com --password <Withheld> --say "$message"
+              #/home/ajorians/Documents/Git/DevBlogBot/Build/SimpleFlowdockConsole/SimpleFlowdockConsole --org techsmith --flow development --user a.orians@techsmith.com --password <Withheld> --say "$message"
               #/home/ajorians/Documents/Git/DevBlogBot/Build/SimpleFlowdockConsole/SimpleFlowdockConsole --org aj-org --flow main --user ajorians@gmail.com --password <Withheld> --say "$message"
               
               title="";
