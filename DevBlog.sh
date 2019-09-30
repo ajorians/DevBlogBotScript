@@ -6,8 +6,8 @@ cd /home/techsmith/temp
 rm index.html
 wget http://devblog.techsmith.com/feed/
 
-flowusername="useremail@location.com"
-flowpassword="yourpassword"
+flowusername="<withheld>"
+flowpassword="<withheld>"
 
 getxml() { # $1 = xml file, $2 = xpath expression
     echo "cat $2" | xmllint --shell $1 |\
@@ -140,14 +140,12 @@ if [ -n "$filename" ]; then
 
               message="New DevBlog post: [$title]($link)"
               echo "Message: $message"
-	      local postdata="{\"event\":\"message\",\"external_user_name\":\"DevBlogBot\",\"content\":\"$message\"}"
-	      local result=$(curl --header "Content-Type: application/json" \
+	      postdata="{\"event\":\"message\",\"external_user_name\":\"DevBlogBot\",\"content\":\"$message\"}"
+	      result=$(curl --header "Content-Type: application/json" \
   --request POST \
   --data "$postdata" \
   -u "$flowusername:$flowpassword" \
   https://api.flowdock.com/flows/techsmith/cory-test/messages)
-              #/home/ajorians/Documents/Git/DevBlogBot/Build/SimpleFlowdockConsole/SimpleFlowdockConsole --org techsmith --flow development --user a.orians@techsmith.com --password <Withheld> --say "$message"
-              #/home/ajorians/Documents/Git/DevBlogBot/Build/SimpleFlowdockConsole/SimpleFlowdockConsole --org aj-org --flow main --user ajorians@gmail.com --password <Withheld> --say "$message"
               
               title="";
               link="";
